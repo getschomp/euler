@@ -13,8 +13,21 @@ def fibonacci(n)
     i = fib_numbers.last
   end
   if i > 4_000_000
-    fibnumbers.pop
+    fib_numbers.pop
   end
+  fib_numbers
 end
 
-puts fibonacci(4_000_000)
+
+def eliminate_odds(array)
+  even_fibs = []
+  array.each do |num|
+    if num % 2 == 0
+      even_fibs << num
+    end
+  end
+  even_fibs
+end
+
+fib_num = fibonacci(4_000_000)
+puts eliminate_odds(fib_num)
