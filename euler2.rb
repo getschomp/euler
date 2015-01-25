@@ -12,7 +12,7 @@ def fibonacci(n)
     fib_numbers << num2
     i = fib_numbers.last
   end
-  if i > 4_000_000
+  if i > n
     fib_numbers.pop
   end
   fib_numbers
@@ -35,6 +35,4 @@ def sum_array(array)
   sum
 end
 
-fib_num = fibonacci(4_000_000)
-even_fibs = eliminate_odds(fib_num)
-puts sum_array(even_fibs)
+puts sum_array(eliminate_odds(fibonacci(4_000_000)))
