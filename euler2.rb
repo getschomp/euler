@@ -29,5 +29,12 @@ def eliminate_odds(array)
   even_fibs
 end
 
+def sum_array(array)
+  sum = 0
+  array.each { |num| sum += num }
+  sum
+end
+
 fib_num = fibonacci(4_000_000)
-puts eliminate_odds(fib_num)
+even_fibs = eliminate_odds(fib_num)
+puts sum_array(even_fibs)
