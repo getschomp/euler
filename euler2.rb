@@ -3,14 +3,14 @@
 # 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, ...
 #
 # By considering the terms in the Fibonacci sequence whose values do not exceed four million, find the sum of the even-valued terms.
-def fibonacci_numbers(highest_fibonacci)
-  fibonacci_sequence = [1,2]
-  fibonacci_result = []
+def fibonacci_numbers
+  fibonacci_snapshot = [1,2]
+  fibonacci_results = []
   loop do
-    return fibonacci_result if fibonacci_sequence[1] > 4_000_000
-    fibonacci_sequence << fibonacci_sequence.reduce(:+)
-    fibonacci_result << fibonacci_sequence[0]
-    fibonacci_sequence.shift
+    return fibonacci_results if fibonacci_snapshot[1] > 4_000_000
+    fibonacci_snapshot << fibonacci_snapshot.reduce(:+)
+    fibonacci_results << fibonacci_snapshot[0]
+    fibonacci_snapshot.shift
   end
 end
 
@@ -18,5 +18,5 @@ def find_evens(numbers)
   numbers.select { |num| num.even? }
 end
 
-evens = find_evens(fibonacci_numbers(4_000_000))
+evens = find_evens(fibonacci_numbers)
 puts evens.reduce(:+)
