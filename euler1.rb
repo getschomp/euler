@@ -13,14 +13,18 @@ class MultipleCollection
   end
 
   def create_multiples(multiples_of, starting_multiple)
-    multiple = multiples_of + starting_multiple
-    return @multiples if multiple > 1_000
-    @multiples << multiple
-    create_multiples(multiples_of, multiple)
+    new_multiple = multiples_of + starting_multiple
+    return @multiples if new_multiple >= 1_000
+    @multiples << new_multiple
+    create_multiples(multiples_of, new_multiple)
+  end
+
+  def self.sum_of_multiples
+    multiple_collection = MultipleCollection.new()
+    multiple_collection.create_multiples(5, 5)
+    multiple_collection.create_multiples(3, 3)
+    puts multiple_collection.multiples.uniq!.reduce(:+)
   end
 end
 
-multiple_collection = MultipleCollection.new()
-multiple_collection.create_multiples(5, 5)
-multiple_collection.create_multiples(3, 3)
-puts multiple_collection.multiples.uniq!.reduce(:+)
+MultipleCollection.sum_of_multiples
